@@ -333,8 +333,6 @@ INSERT INTO Placowka VALUES
 		(@counter, 0),
 		(@counter, 0);
 
-
-
 		SET @counter = @counter + 1;
 	END;
 
