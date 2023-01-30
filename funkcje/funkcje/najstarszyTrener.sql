@@ -5,7 +5,7 @@ CREATE FUNCTION dbo.najstarszyTrener()
 RETURNS int
 AS
 BEGIN
-RETURN 
+	RETURN 
 	(SELECT TOP 1 Pracownik.ID_Pracownika FROM Pracownik
 	WHERE Pracownik.DateOfBirth = (
 		SELECT MIN(Pracownik.DateOfBirth) FROM Trener JOIN Pracownik 
