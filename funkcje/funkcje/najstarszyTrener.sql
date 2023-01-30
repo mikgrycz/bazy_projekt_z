@@ -1,3 +1,6 @@
+IF OBJECT_ID(N'najstarszyTrener') IS NOT NULL
+DROP FUNCTION najstarszyTrener
+
 CREATE FUNCTION dbo.najstarszyTrener()
 RETURNS int
 AS
