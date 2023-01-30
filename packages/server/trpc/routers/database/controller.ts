@@ -195,7 +195,7 @@ export const fireWorker = async ({
 
 export const createBackup = async() => {
     const Time = new Date();
-    return await db.execute(`BACKUP DATABASE ${process.env.database} TO DISK = '${process.env.backup_path}\\Backup-${Time.getDate()}-${Time.getMonth()+1}-${Time.getFullYear()}.bak';`);
+    return await db.execute(`BACKUP DATABASE ${process.env.database} TO DISK = '${process.env.backup_path}\\Backup-${Time.getSeconds()}-${Time.getMinutes()}-${Time.getHours()}-${Time.getDate()}-${Time.getMonth()+1}-${Time.getFullYear()}.bak';`);
 }
 
 
