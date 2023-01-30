@@ -1,16 +1,17 @@
 IF OBJECT_ID('czy_placowka_tu_istnieje') IS NOT NULL
 DROP PROC czy_placowka_tu_istnieje
+
 CREATE PROC dbo.czy_placowka_tu_istnieje @miasto varchar(255)
 AS
-	if exists (SELECT Placowka.City FROM Placowka WHERE Placowka.City LIKE @miasto) 
-	begin
-		print 'Oto nasze placowki w podanym miescie'
+	IF EXISTS (SELECT Placowka.City FROM Placowka WHERE Placowka.City LIKE @miasto) 
+	BEGIN
+		PRINT 'Oto nasze placowki w podanym miescie'
 		SELECT * FROM Placowka WHERE Placowka.City LIKE @miasto
-	end	
-	if not exists(SELECT Placowka.City FROM Placowka WHERE Placowka.City LIKE @miasto)
-	begin
-		print 'Niestety w podanym miescie nie istnieje zadna nasza placowka'
-	end
+	END	
+	IF NOT EXISTS(SELECT Placowka.City FROM Placowka WHERE Placowka.City LIKE @miasto)
+	BEGIN
+		PRINT 'Niestety w podanym miescie nie istnieje zadna nasza placowka'
+	END
 GO 
 
  EXEC dbo.czy_placowka_tu_istnieje @miasto = 'Springfield'
