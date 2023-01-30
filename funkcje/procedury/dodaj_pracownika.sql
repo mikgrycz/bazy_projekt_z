@@ -28,7 +28,7 @@ AS
 GO
 
 CREATE PROCEDURE dbo.dodaj_Ochroniarza @ID_Pracownika INT, @LiczbaGodzin  NVARCHAR(10),	@CenaZaGodzine INT, @Srodki_Przymusu_Bezposredniego BIT,
-				@Rozmiar_Biceps	Int
+				@Rozmiar_Biceps	INT
 AS 
 	INSERT INTO
 	dbo.Ochrona VALUES  (@ID_Pracownika, @LiczbaGodzin, @CenaZaGodzine, @Srodki_Przymusu_Bezposredniego, @Rozmiar_Biceps);
