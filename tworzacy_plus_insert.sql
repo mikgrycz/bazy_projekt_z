@@ -1777,7 +1777,7 @@ CREATE TRIGGER Make_Payment ON Klienci
 			LEFT JOIN Oferta A ON ID_oferty = Id_biletu 
 			LEFT JOIN Dolar B ON ID_Dolara = 1 
 
-		INSERT INTO Przelew VALUES(@A,@C,getdate());
+		INSERT INTO Przelew VALUES(@A,@C,2023);
 	END
 
 GO
@@ -1790,7 +1790,7 @@ CREATE TRIGGER Register_fee ON KLIENCI
 		SELECT @A = ID_klienta, @C = 5 * B.Kurs FROM Inserted
 			LEFT JOIN Dolar B ON ID_Dolara = 1 
 
-		INSERT INTO Przelew VALUES(@A,@C,getdate());
+		INSERT INTO Przelew VALUES(@A,@C,2023);
 	END
 
 GO
