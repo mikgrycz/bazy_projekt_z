@@ -1758,7 +1758,7 @@ IF OBJECT_ID ('dbo.trgPodwyzkaSprzataczka') IS NOT NULL
 IF OBJECT_ID ('dbo.trgPodwyzkaOchroniarz') IS NOT NULL
 	DROP TRIGGER trgPodwyzkaOchroniarz;
 
-Go
+GO
 CREATE TRIGGER Opened_new_location ON Placowka 
 	AFTER INSERT
 	AS
@@ -1767,7 +1767,7 @@ CREATE TRIGGER Opened_new_location ON Placowka
 	 Set Kurs = Kurs + 1
 END
 
-Go
+GO
 CREATE TRIGGER Make_Payment ON Klienci
 	AFTER Update 
 	AS
@@ -1782,9 +1782,6 @@ CREATE TRIGGER Make_Payment ON Klienci
 	END
 
 GO
-
-
-Go
 CREATE TRIGGER Register_fee ON KLIENCI
 	AFTER INSERT 
 	AS
@@ -1796,8 +1793,6 @@ CREATE TRIGGER Register_fee ON KLIENCI
 
 		INSERT INTO Przelew VALUES(@A,@C,getdate());
 	END
-
-Go
 
 GO
 CREATE TRIGGER trgPodwyzkaSprzataczka ON Sprzataczka
@@ -1816,4 +1811,4 @@ CREATE TRIGGER trgPodwyzkaOchroniarz ON Ochrona
 		UPDATE Ochrona
 		SET Ochrona.Wyplata_Godzinowa = Ochrona.Wyplata_Godzinowa - 1
 	END
-
+GO
