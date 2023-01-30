@@ -53,9 +53,7 @@ export const hireTrainer = async ({
     Specjalizacja,
     DateOfBirth,
     CenaZaGodzine,
-    ID_pracownika
 }: {
-    ID_pracownika: string,
     ID_Placowki: string,
     FirstName: string,
     LastName: string,
@@ -64,13 +62,11 @@ export const hireTrainer = async ({
     CenaZaGodzine: string
 }) => {
     try {
-        console.log('tworze klienta',
-        `INSERT INTO Pracownik VALUES (${ID_pracownika},${ID_Placowki},'${FirstName}','${LastName}',${DateOfBirth},'Trener')`);
-        const workerID = await db.insert(`INSERT INTO Pracownik VALUES (${ID_pracownika},${ID_Placowki},'${FirstName}','${LastName}',${DateOfBirth},'Trener')`)
-        console.log('utworzylem klienta')
+        const ID_pracownika = Math.floor(Math.random()* 100000000);
+        await db.insert(`INSERT INTO Pracownik VALUES (${ID_pracownika},${ID_Placowki},'${FirstName}','${LastName}',${DateOfBirth},'Trener')`)
         await db.insert(`INSERT INTO Trener VALUES ('${ID_pracownika}','${Specjalizacja}','${CenaZaGodzine}')`);
         return {
-            id: workerID,
+            id: ID_pracownika,
             FirstName,
             LastName,
             Specjalizacja,
@@ -111,10 +107,11 @@ export const hireGuard = async ({
     Srodki_Przymusu_Bezposredniego: boolean
 }) => {
     try {
-        const workerID = await db.insert(`INSERT INTO Pracownik VALUES (${ID_Placowki},'${FirstName}','${LastName}',${DateOfBirth},'Ochrona')`)
-        await db.insert(`INSERT INTO Ochrona VALUES ('${workerID}','${Liczba_Godzin}','${Wyplata_Godzinowa}','${Srodki_Przymusu_Bezposredniego ? '1' : '0'}','${Rozmiar_bicepsu}')`);
+        const ID_pracownika = Math.floor(Math.random()* 100000000);
+        await db.insert(`INSERT INTO Pracownik VALUES (${ID_pracownika},${ID_Placowki},'${FirstName}','${LastName}',${DateOfBirth},'Ochrona')`)
+        await db.insert(`INSERT INTO Ochrona VALUES ('${ID_pracownika}','${Liczba_Godzin}','${Wyplata_Godzinowa}','${Srodki_Przymusu_Bezposredniego ? '1' : '0'}','${Rozmiar_bicepsu}')`);
         return {
-            id: workerID,
+            id: ID_pracownika,
             ID_Placowki,
             FirstName,
             LastName,
@@ -152,10 +149,11 @@ export const hireCleaner = async ({
     DateOfBirth: string
 }) => {
     try {
-        const workerID = await db.insert(`INSERT INTO Pracownik VALUES (${ID_Placowki},'${FirstName}','${LastName}',${DateOfBirth},'Sprzataczka')`)
-        await db.insert(`INSERT INTO Sprzataczka VALUES ('${workerID}','${Liczba_Godzin}','${Wyplata_Godzinowa}')`);
+        const ID_pracownika = Math.floor(Math.random()* 100000000);
+        await db.insert(`INSERT INTO Pracownik VALUES (${ID_pracownika},${ID_Placowki},'${FirstName}','${LastName}',${DateOfBirth},'Sprzataczka')`)
+        await db.insert(`INSERT INTO Sprzataczka VALUES ('${ID_pracownika}','${Liczba_Godzin}','${Wyplata_Godzinowa}')`);
         return {
-            id: workerID,
+            id: ID_pracownika,
             ID_Placowki,
             FirstName,
             LastName,
