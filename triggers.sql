@@ -14,7 +14,7 @@ CREATE TRIGGER Opened_new_location ON Placowka
 	BEGIN
 	 UPDATE Dolar
 	 Set Kurs = Kurs + 1
-END;
+END
 
 Go
 CREATE TRIGGER Make_Payment ON Klienci
@@ -47,3 +47,20 @@ CREATE TRIGGER Register_fee ON KLIENCI
 	END
 
 Go
+
+CREATE TRIGGER trgPodwyzkaSprzataczka ON Sprzataczka
+	AFTER UPDATE
+	AS
+	BEGIN
+		UPDATE Sprzataczka
+		SET Sprzataczka.Wyplata_Godzinowa = Sprzataczka.Wyplata_Godzinowa - 1
+	END
+
+CREATE TRIGGER trgPodwyzkaOchroniarz ON Ochrona
+	AFTER UPDATE
+	AS
+	BEGIN
+		UPDATE Ochrona
+		SET Ochrona.Wyplata_Godzinowa = Ochrona.Wyplata_Godzinowa - 1
+	END
+
