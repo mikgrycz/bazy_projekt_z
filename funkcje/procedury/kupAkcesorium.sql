@@ -28,7 +28,7 @@ GO
 
 EXEC kupObciazenia @masa = 14, @otwor = 8, @idPlacowki = 8, @ilosc = 12
 
-CREATE PROC kupHantle @masa INT, @typ VARCHAR(15), @idPlacowki INT, @ilosc INT
+CREATE PROC kupHantle @masa INT, @typ NVARCHAR(15), @idPlacowki INT, @ilosc INT
 AS
 	DECLARE @nextIndex AS INT
 	SET @nextIndex = (SELECT MAX(ID_Sprzetu) FROM Sprzet)
