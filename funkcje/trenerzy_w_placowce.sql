@@ -1,4 +1,5 @@
-
+IF OBJECT_ID(N'Trenerzey_w_placowce') IS NOT NULL
+DROP VIEW Trenerzy_w_placowce
 CREATE VIEW Trenerzy_w_placowce
 AS
 	SELECT FirstName, LastName FROM (Trener  JOIN Pracownik  ON Trener.ID_Pracownika = Pracownik.ID_Pracownika )
