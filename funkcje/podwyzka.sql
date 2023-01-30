@@ -1,13 +1,18 @@
+IF OBJECT_ID(N'podwyzka_sprzataczka') IS NOT NULL
+DROP PROC podwyzka_sprzataczka
+IF OBJECT_ID(N'podwyzka_ochrona') IS NOT NULL
+DROP PROC podwyzka_ochrona
+
 CREATE PROC podwyzka_sprzataczka @id NVARCHAR(50), @nowaWyplata INT
 AS
 	UPDATE Sprzataczka
-	SET Sprzataczka.Wyplata_Godzinowa = @nowaWyplata + 1
+	SET Sprzataczka.Wyplata_Godzinowa = @nowaWyplata
 	WHERE Sprzataczka.ID_Pracownika = @id
 GO
 
 CREATE PROC podwyzka_ochrona @id NVARCHAR(50), @nowaWyplata INT
 AS
 	UPDATE Ochrona
-	SET Ochrona.Wyplata_Godzinowa = @nowaWyplata + 1
+	SET Ochrona.Wyplata_Godzinowa = @nowaWyplata
 	WHERE Ochrona.ID_Pracownika = @id
 GO
