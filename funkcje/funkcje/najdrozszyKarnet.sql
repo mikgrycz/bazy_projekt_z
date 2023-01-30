@@ -2,7 +2,7 @@ IF OBJECT_ID(N'najdrozszyKarnet') IS NOT NULL
 DROP FUNCTION najdrozszyKarnet
 
 CREATE FUNCTION dbo.najdrozszyKarnet()
-RETURNS int
+RETURNS INT
 AS
 BEGIN
     RETURN (SELECT MAX(Cena_Dynamiczna) FROM Oferta);
