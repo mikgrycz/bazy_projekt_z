@@ -14,4 +14,7 @@ BEGIN
 		)
 	)
 END
+
 GO
+
+EXEC dbo.najstarszyTrener()
