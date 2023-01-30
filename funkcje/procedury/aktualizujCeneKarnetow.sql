@@ -1,5 +1,6 @@
 IF OBJECT_ID(N'aktualizuj_cene_karnetu') IS NOT NULL
 DROP PROC aktualizuj_cene_karnetu
+
 CREATE PROC aktualizuj_cene_karnetu @nazwa NVARCHAR(50), @nowaCena INT
 AS
 	UPDATE Oferta
