@@ -1,3 +1,5 @@
+IF OBJECT_ID(N'pokaz_akcesoria') IS NOT NULL
+DROP VIEW pokaz_akcesoria
 CREATE PROC pokaz_akcesoria @idPlacowki INT
 AS
 	SELECT * FROM Sprzet
