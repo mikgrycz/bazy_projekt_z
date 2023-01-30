@@ -14,6 +14,6 @@ BEGIN
 	)
     	RETURN @wynik;
 END;
-GO
 
+GO
 SELECT dbo.najczesciejKupowanyKarne
