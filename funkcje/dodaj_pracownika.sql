@@ -1,11 +1,18 @@
-
-CREATE PROCEDURE dbo.dodaj_pracownika @plac int, @imie nvarchar(255), @nazwisko nvarchar(255), @data Date, @zawod nvarchar(255)
+IF OBJECT_ID(N'dodaj_pracownika') IS NOT NULL
+DROP PROC dodaj_pracownika
+IF OBJECT_ID(N'dodaj_trenera') IS NOT NULL
+DROP PROC dodaj_trenera
+IF OBJECT_ID(N'dodaj_sprzataczke') IS NOT NULL
+DROP PROC dodaj_sprzataczke
+IF OBJECT_ID(N'dodaj_ochroniarza') IS NOT NULL
+DROP PROC dodaj_ochroniarza
+CREATE PROCEDURE dbo.dodaj_pracownika @id int, @plac int, @imie nvarchar(255), @nazwisko nvarchar(255), @data int, @zawod nvarchar(255)
 AS 
 	INSERT INTO
-	dbo.Pracownik VALUES  (@plac, @imie, @nazwisko, @data, @zawod);
+	dbo.Pracownik VALUES  (@id, @plac, @imie, @nazwisko, @data, @zawod);
 GO
 
- EXEC dbo.dodaj_pracownika @plac = 2, @imie = 'Zbigniew', @nazwisko = 'Nowatorski', @data = '1969-04-20' , @zawod = 'Ochrona'
+ EXEC dbo.dodaj_pracownika @id = 1000, @plac = 2, @imie = 'Zbigniew', @nazwisko = 'Nowatorski', @data = 1969 , @zawod = 'Ochrona'
 
 CREATE PROCEDURE dbo.dodaj_trenera @ID_Pracownika int, @Specjalizacja  VARCHAR(10),	@CenaZaGodzine Int
 AS 
