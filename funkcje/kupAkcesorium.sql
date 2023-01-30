@@ -1,3 +1,22 @@
+IF OBJECT_ID(N'kupObciazenia') IS NOT NULL
+DROP PROC kupObciazenia
+IF OBJECT_ID(N'kupHantle') IS NOT NULL
+DROP PROC kupHantle
+IF OBJECT_ID(N'kupDrazki') IS NOT NULL
+DROP PROC kupDrazki
+IF OBJECT_ID(N'kupMaszyny') IS NOT NULL
+DROP PROC kupMaszyny
+IF OBJECT_ID(N'kupGumy') IS NOT NULL
+DROP PROC kupGumy
+IF OBJECT_ID(N'kupPasy') IS NOT NULL
+DROP PROC kupPasy
+IF OBJECT_ID(N'kupPilki') IS NOT NULL
+DROP PROC kupPilki
+IF OBJECT_ID(N'kupMaty') IS NOT NULL
+DROP PROC kupMaty
+IF OBJECT_ID(N'kupKamizelki') IS NOT NULL
+DROP PROC kupKamizelki
+
 CREATE PROC kupObciazenia @masa INT, @otwor INT, @idPlacowki INT, @ilosc INT
 AS
 	DECLARE @nextIndex AS INT
