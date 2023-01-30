@@ -1,3 +1,6 @@
+IF OBJECT_ID(N'najdrozszyKarnet') IS NOT NULL
+DROP FUNCTION najdrozszyKarnet
+
 CREATE FUNCTION dbo.najdrozszyKarnet()
 RETURNS int
 AS
