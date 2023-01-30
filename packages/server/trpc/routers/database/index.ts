@@ -28,6 +28,7 @@ const databaseRouter = t.router({
         )
         .mutation(async ({ input }) => {
             const trainer = await hireTrainer({
+                ID_pracownika:'600',
                 CenaZaGodzine: input.CenaZaGodzine,
                 ID_Placowki: input.ID_Placowki,
                 FirstName: input.FirstName,

@@ -52,8 +52,10 @@ export const hireTrainer = async ({
     LastName,
     Specjalizacja,
     DateOfBirth,
-    CenaZaGodzine
+    CenaZaGodzine,
+    ID_pracownika
 }: {
+    ID_pracownika: string,
     ID_Placowki: string,
     FirstName: string,
     LastName: string,
@@ -62,8 +64,11 @@ export const hireTrainer = async ({
     CenaZaGodzine: string
 }) => {
     try {
-        const workerID = await db.insert(`INSERT INTO Pracownik VALUES (${ID_Placowki},'${FirstName}','${LastName}','${DateOfBirth}','Trener')`)
-        await db.insert(`INSERT INTO Trener VALUES ('${workerID}','${Specjalizacja}','${CenaZaGodzine}')`);
+        console.log('tworze klienta',
+        `INSERT INTO Pracownik VALUES (${ID_pracownika},${ID_Placowki},'${FirstName}','${LastName}',${DateOfBirth},'Trener')`);
+        const workerID = await db.insert(`INSERT INTO Pracownik VALUES (${ID_pracownika},${ID_Placowki},'${FirstName}','${LastName}',${DateOfBirth},'Trener')`)
+        console.log('utworzylem klienta')
+        await db.insert(`INSERT INTO Trener VALUES ('${ID_pracownika}','${Specjalizacja}','${CenaZaGodzine}')`);
         return {
             id: workerID,
             FirstName,
@@ -77,6 +82,7 @@ export const hireTrainer = async ({
         };
     } catch {
         (err: any) => {
+            console.log(err)
             return new TRPCError({
                 code: "INTERNAL_SERVER_ERROR",
                 message: err
@@ -105,7 +111,7 @@ export const hireGuard = async ({
     Srodki_Przymusu_Bezposredniego: boolean
 }) => {
     try {
-        const workerID = await db.insert(`INSERT INTO Pracownik VALUES (${ID_Placowki},'${FirstName}','${LastName}','${DateOfBirth}','Ochrona')`)
+        const workerID = await db.insert(`INSERT INTO Pracownik VALUES (${ID_Placowki},'${FirstName}','${LastName}',${DateOfBirth},'Ochrona')`)
         await db.insert(`INSERT INTO Ochrona VALUES ('${workerID}','${Liczba_Godzin}','${Wyplata_Godzinowa}','${Srodki_Przymusu_Bezposredniego ? '1' : '0'}','${Rozmiar_bicepsu}')`);
         return {
             id: workerID,
@@ -146,7 +152,7 @@ export const hireCleaner = async ({
     DateOfBirth: string
 }) => {
     try {
-        const workerID = await db.insert(`INSERT INTO Pracownik VALUES (${ID_Placowki},'${FirstName}','${LastName}','${DateOfBirth}','Sprzataczka')`)
+        const workerID = await db.insert(`INSERT INTO Pracownik VALUES (${ID_Placowki},'${FirstName}','${LastName}',${DateOfBirth},'Sprzataczka')`)
         await db.insert(`INSERT INTO Sprzataczka VALUES ('${workerID}','${Liczba_Godzin}','${Wyplata_Godzinowa}')`);
         return {
             id: workerID,

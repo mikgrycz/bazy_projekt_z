@@ -265,7 +265,7 @@ Create Table Produkt(
 );
 
 Create Table Napoje(
-	ID_Pracownika int not null	
+    Id_Produktu int IDENTITY(1, 1) PRIMARY KEY,
 	constraint PK_Napoje primary Key (ID_Pracownika)
 	constraint SK_Napoje foreign Key (ID_Pracownika) references Pracownik(ID_Pracownika) ON DELETE CASCADE,
     Pojemnosc INT not NULL,
@@ -273,7 +273,7 @@ Create Table Napoje(
 	CHECK (Opakowanie IN ('karton','plastik'))
 )
 Create Table Batony(
-	ID_Pracownika int not null	
+    Id_Produktu int IDENTITY(1, 1) PRIMARY KEY,
 	constraint PK_Batony primary Key (ID_Pracownika)
 	constraint SK_Batony foreign Key (ID_Pracownika) references Pracownik(ID_Pracownika) ON DELETE CASCADE,
     Waga Int not NULL,
@@ -282,7 +282,7 @@ Create Table Batony(
 )
 
 Create Table Bialka(
-	ID_Pracownika int not null	
+    Id_Produktu int IDENTITY(1, 1) PRIMARY KEY,
 	constraint PK_Bialka primary Key (ID_Pracownika)
 	constraint SK_Bialka foreign Key (ID_Pracownika) references Pracownik(ID_Pracownika) ON DELETE CASCADE,
     Waga Int not null,

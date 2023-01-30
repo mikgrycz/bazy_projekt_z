@@ -15,7 +15,7 @@ export default function () {
     const [FirstName, setFirstName] = useState("")
     const [LastName, setLastName] = useState("")
     const [ID_Placowki, setID_Placowki] = useState<string | null>();
-    const [DateOfBirth, setDateOfBirth] = useState(new Date());
+    const [DateOfBirth, setDateOfBirth] = useState('2000');
 
 
     const [Specjalizacja, setSpecjalizacja] = useState<null | Specialization>(null);
@@ -77,7 +77,7 @@ export default function () {
                 })
         }
     })
-    
+
     return (
         <div>
             <input type="checkbox" id="my-modal" className="modal-toggle" />
@@ -89,7 +89,7 @@ export default function () {
                         <input type="text" placeholder="Last Name" className="w-full my-2 input input-bordered " value={LastName} onChange={(e) => setLastName(e.currentTarget.value)} />
 
                         <span className='flex items-center justify-between'>
-                            <DatePicker selected={DateOfBirth} onChange={(date: Date) => setDateOfBirth(date)} className='px-2 rounded-full w-60' />
+                            <input type="int" placeholder="Birth" className="w-full my-2 input input-bordered " value={DateOfBirth} onChange={(e) => setDateOfBirth(e.currentTarget.value)} />
                             <select className="select select-ghost" onChange={(e) => setID_Placowki(e.target.value)}>
                                 <option disabled selected>Wybierz Placowke</option>
                                 {
@@ -160,14 +160,14 @@ export default function () {
                                         FirstName,
                                         LastName,
                                         ID_Placowki,
-                                        DateOfBirth: DateOfBirth.toISOString().slice(0, 10),
+                                        DateOfBirth
                                     })
                                 }
                                 if (Zawod === 'Ochrona') {
                                     console.log('ochrona')
                                     if (!FirstName || !LastName || !ID_Placowki || !Wyplata_Godzinowa || !Liczba_Godzin || !Rozmiar_bicepsu || !Srodki_Przymusu_Bezposredniego) return;
                                     hireGuard.mutate({
-                                        DateOfBirth: DateOfBirth.toISOString().slice(0, 10),
+                                        DateOfBirth,
                                         FirstName,
                                         ID_Placowki,
                                         LastName,
@@ -186,7 +186,7 @@ export default function () {
                                         FirstName,
                                         LastName,
                                         ID_Placowki,
-                                        DateOfBirth: DateOfBirth.toISOString().slice(0, 10),
+                                        DateOfBirth: DateOfBirth,
                                     })
                                 }
                             }}>
