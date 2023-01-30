@@ -1,3 +1,6 @@
+IF OBJECT_ID(N'najtanszyKarnet') IS NOT NULL
+DROP FUNCTION najtanszyKarnet
+
 CREATE FUNCTION dbo.najtanszyKarnet()
 RETURNS int
 AS
